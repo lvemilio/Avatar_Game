@@ -56,7 +56,7 @@ class charExperienceTesting extends FunSuite {
     var wolfbat:AngryWolfbat = new AngryWolfbat
     aang.level += 6
     aang.gainXP(wolfbat)
-    assert(aang.currentXp == (20*wolfbat.level.toFloat/aang.level.toFloat).round.toInt)
+    assert(aang.currentXp == (20*wolfbat.level.toFloat/aang.level.toFloat).round)
   }
 
 
