@@ -1,36 +1,68 @@
 package characterClasses
 
+import highest_order_class.AnyPlayFightChar
+import second_ord_classses.{Basic_Monster, BenderClass}
 
 
-class Airbender_Class(var charName:String) {
+class Airbender_Class(name:String) extends BenderClass {
   var maxHealth:Int = 90
   var maxChi:Int = 115
   var currentHealth:Int = maxHealth
   var currentChi:Int = maxChi
-  var physicalAttackPower:Int = 5
+  var physicalAttack:Int = 5
   var bendingAttackPower:Int = 20
-  var benderResolve:Int = 4 //Resolve is like armor, it represents the amount attacks can get reduced by
-  var agility:Int = scala.util.Random.nextInt(10)//Agility represents the chance a bender can dodge an attack
-                                                  // This stat will later be used in a method
+  var resolve:Int = 4 //Resolve is like armor, it represents the amount attacks can get reduced by
+  var agility:Int = scala.util.Random.nextInt(10)//Agility represents the chance a bender can dodge an attack   // This stat will later be used in a method
   var isAlive:Boolean = true
 
-  def takeDamage(damage:Int): Unit ={
-    currentHealth -= damage
+  override var maxXp: Int = 100
+  override var currentXp: Int = 0
+  override var level: Int = 1
+
+  override def takeDamage(damage:Int): Unit ={
+    currentHealth = currentHealth - damage + resolve
     if (currentHealth <= 0){
       isAlive = false
     }
   }
 
-
-  def dealPhysDamage(wolfbat: AngryWolfbat): Unit ={
-    wolfbat.takeDamage(this.physicalAttackPower - wolfbat.resolve)
+  override def dealPhysDamage(anyChar: AnyPlayFightChar): Unit ={
+    anyChar.takeDamage(this.physicalAttack - anyChar.resolve)
+    if (anyChar.currentHealth<=0){
+      gainXP(anyChar) //If any character dies from damage, the winner gains xp
+    }
   }
-  def dealMBenDamage(wolfbat: AngryWolfbat): Unit ={
+
+  override def dealBenDamage(anyChar: AnyPlayFightChar): Unit ={
     if (currentChi<=0){
       return
     }
-    wolfbat.takeDamage(this.bendingAttackPower-wolfbat.resolve)
+    anyChar.takeDamage(this.bendingAttackPower-anyChar.resolve)
     this.currentChi -=  10
+  }
+
+  override def gainXP(anyChar: AnyPlayFightChar): Unit = {
+    var xpLevelFactor:Double = anyChar.level.toFloat/this.level.toFloat // The amount of xp is determined by the level factor, if the enemy is a higher level, the winner gets more.
+    this.currentXp += (20*xpLevelFactor).round.toInt
+
+    if (this.currentXp>=this.maxXp){ //If the player has more or equal xp to that of the winner, they level up
+      levelUp()
+    }
+  }
+
+  override def levelUp(): Unit = {
+    var levelFactor:Int = currentXp/maxXp //Set up a level factor
+
+    this.level += levelFactor
+    currentXp = currentXp - (maxXp*levelFactor) // Increase level and increment xP
+
+    this.maxHealth += 5*levelFactor  // Increase stats
+    this.maxChi += 7*levelFactor
+    currentHealth = maxHealth
+    currentChi = maxChi
+    physicalAttack += 2*levelFactor
+    bendingAttackPower += 3*levelFactor
+    resolve += 1*levelFactor
 
   }
 }

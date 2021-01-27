@@ -13,21 +13,21 @@ class dealDamageTesting extends FunSuite{
   test("Bending damage was reduced by the right amount"){
     val aang:Airbender_Class = new Airbender_Class("Aang")
     val wolfbat:AngryWolfbat = new AngryWolfbat()
-    aang.dealMBenDamage(wolfbat)
+    aang.dealBenDamage(wolfbat)
     println(wolfbat.agility - wolfbat.agilityCounter)
     assert(wolfbat.currentHealth == 12 || wolfbat.currentHealth == 30)
   }
   test("Chi was reduced by the right amount"){
     val aang:Airbender_Class = new Airbender_Class("Aang")
     val wolfbat:AngryWolfbat = new AngryWolfbat()
-    aang.dealMBenDamage(wolfbat)
+    aang.dealBenDamage(wolfbat)
     assert(aang.currentChi == 105)
   }
   test("Attack deals no damage if attacker has no Chi"){
     val aang:Airbender_Class = new Airbender_Class("Aang")
     val wolfbat:AngryWolfbat = new AngryWolfbat()
     aang.currentChi = 0
-    aang.dealMBenDamage(wolfbat)
+    aang.dealBenDamage(wolfbat)
     println(wolfbat.agility - wolfbat.agilityCounter)
     assert(wolfbat.currentHealth == 30)
   }
@@ -35,7 +35,7 @@ class dealDamageTesting extends FunSuite{
     val aang:Airbender_Class = new Airbender_Class("Aang")
     val wolfbat:AngryWolfbat = new AngryWolfbat()
     wolfbat.agility = 100
-    aang.dealMBenDamage(wolfbat)
+    aang.dealBenDamage(wolfbat)
     assert(wolfbat.currentHealth == 30)
   }
 
