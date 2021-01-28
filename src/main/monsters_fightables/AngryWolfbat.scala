@@ -1,4 +1,4 @@
-package characterClasses
+package monsters_fightables
 
 import second_ord_classses.Basic_Monster
 

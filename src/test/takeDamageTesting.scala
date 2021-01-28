@@ -7,7 +7,7 @@ class takeDamageTesting extends FunSuite {
     testAang.currentHealth = testAang.maxHealth
     testAang.takeDamage(15)
     println(testAang.agility)
-    assert(testAang.currentHealth == 79)
+    assert(testAang.currentHealth == 79 || testAang.currentHealth == testAang.maxHealth)
   }
   test("Damage was not lethal"){
     val testAang:Airbender_Class = new Airbender_Class("Aang")
@@ -19,6 +19,7 @@ class takeDamageTesting extends FunSuite {
     val testAang:Airbender_Class = new Airbender_Class("Aang")
     testAang.currentHealth = testAang.maxHealth
     testAang.takeDamage(100)
+    testAang.agility -= 10
     assert(testAang.isAlive === false)
   }
 }

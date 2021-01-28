@@ -1,5 +1,5 @@
 import characterClasses.Airbender_Class
-import characterClasses.AngryWolfbat
+import monsters_fightables.AngryWolfbat
 import org.scalatest._
 
 
@@ -7,7 +7,7 @@ class charExperienceTesting extends FunSuite {
   test("Character gains the proper experience points"){
     var aang:Airbender_Class = new Airbender_Class("Aang")
     var wolfbat:AngryWolfbat = new AngryWolfbat
-    aang.gainXP(wolfbat)
+    aang.gainXP(1)
     assert(aang.currentXp == 20)
   }
 
@@ -17,7 +17,7 @@ class charExperienceTesting extends FunSuite {
     laghima.takeDamage(15)
     laghima.dealBenDamage(wolfbat)
     wolfbat.level += 4 // Wolfbat level is increased so test can gain proper xp
-    laghima.gainXP(wolfbat)
+    laghima.gainXP(5)
     assert(laghima.level == 2 &&
       laghima.currentXp == 0 &&
       laghima.maxHealth == 95 &&
@@ -34,7 +34,7 @@ class charExperienceTesting extends FunSuite {
     laghima.takeDamage(15)
     laghima.dealBenDamage(wolfbat)
     wolfbat.level +=10
-    laghima.gainXP(wolfbat)
+    laghima.gainXP(11)
     assert(laghima.level == 3 &&
       laghima.currentXp == 20 &&
       laghima.maxHealth == 100 &&
@@ -48,14 +48,14 @@ class charExperienceTesting extends FunSuite {
     var aang:Airbender_Class = new Airbender_Class("Aang")
     var wolfbat:AngryWolfbat = new AngryWolfbat
     aang.level += 4
-    aang.gainXP(wolfbat)
+    aang.gainXP(1)
     assert(aang.currentXp == 4)
   }
   test("Character gains the proper experience points if enemy is lower level but with stranger numbers"){
     var aang:Airbender_Class = new Airbender_Class("Aang")
     var wolfbat:AngryWolfbat = new AngryWolfbat
     aang.level += 6
-    aang.gainXP(wolfbat)
+    aang.gainXP(1)
     assert(aang.currentXp == (20*wolfbat.level.toFloat/aang.level.toFloat).round)
   }
 

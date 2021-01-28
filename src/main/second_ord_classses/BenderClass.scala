@@ -1,6 +1,6 @@
 package second_ord_classses
 
-import highest_order_class.AnyPlayFightChar
+import highest_order_classes.AnyPlayFightChar
 
 abstract class BenderClass extends AnyPlayFightChar {
   var maxHealth:Int
@@ -21,7 +21,7 @@ abstract class BenderClass extends AnyPlayFightChar {
   def takeDamage(damage:Int): Unit
   def dealPhysDamage(anyPlayFightChar: AnyPlayFightChar): Unit
   def dealBenDamage(anyPlayFightChar: AnyPlayFightChar): Unit
-  def gainXP(anyPlayFightChar: AnyPlayFightChar):Unit
+  def gainXP(anyPlayFightCharLvl: Double):Unit
   def levelUp():Unit
 }
 
