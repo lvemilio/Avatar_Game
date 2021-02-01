@@ -20,12 +20,14 @@ class partyTesting extends FunSuite{
     theOgParty.fightWon(wrongParty)
     assert(aang.currentXp == 20 && toph.currentXp == 20 &&zuko.currentXp == 20&& katara.currentXp==20)
   }
-  test("Proper experience is recieved by winning part, levels equal, but member amount unequal"){
+
+  test("Proper experience is recieved by winning part, levels equal, one member dies"){
     val aang:Airbender_Class = new Airbender_Class("Aang")
     val toph:EarthBender = new EarthBender("Toph")
     val zuko:FireBender = new FireBender("Zuko")
     val katara:WaterBender = new WaterBender("Katara")
     val theOgParty:benderParty = new benderParty(List(aang,toph,zuko,katara))
+    zuko.isAlive = false
 
     val laghima:Airbender_Class = new Airbender_Class("laghima")
     val boomy:EarthBender = new EarthBender("boomy")
@@ -33,10 +35,10 @@ class partyTesting extends FunSuite{
 
     val wrongParty:benderParty = new benderParty(List(laghima,boomy,azula))
     theOgParty.fightWon(wrongParty)
-    assert(aang.currentXp == 15 && toph.currentXp == 15 &&zuko.currentXp == 15&& katara.currentXp==15)
+    assert(aang.currentXp == 20 && toph.currentXp == 20 &&zuko.currentXp == 0&& katara.currentXp==20)
 
   }
-  test("Proper experience is recieved by winning part, levels equal, but member amount unequal repeated"){
+  test("Proper experience is recieved by winning part, levels equal, but member amount unequal, different members die"){
     val aang:Airbender_Class = new Airbender_Class("Aang")
     val toph:EarthBender = new EarthBender("Toph")
     val zuko:FireBender = new FireBender("Zuko")
@@ -47,16 +49,25 @@ class partyTesting extends FunSuite{
     val boomy:EarthBender = new EarthBender("boomy")
     val azula:FireBender = new FireBender("azula")
 
+    katara.isAlive = false
+    aang.isAlive = false
+
     val wrongParty:benderParty = new benderParty(List(laghima,boomy))
     theOgParty.fightWon(wrongParty)
-    assert(aang.currentXp == 10 && toph.currentXp == 10 &&zuko.currentXp == 10&& katara.currentXp==10)
+    assert(aang.currentXp == 0 && toph.currentXp == 20 &&zuko.currentXp == 20&& katara.currentXp==0)
   }
-  test("Proper experience is recieved by winning party, levels unequal, player amount equal"){
+
+  test("Proper experience is recieved by winning party, levels unequal, player amount equal, 3 members die"){
     val aang:Airbender_Class = new Airbender_Class("Aang")
     val toph:EarthBender = new EarthBender("Toph")
     val zuko:FireBender = new FireBender("Zuko")
     val katara:WaterBender = new WaterBender("Katara")
     val theOgParty:benderParty = new benderParty(List(aang,toph,zuko,katara))
+
+    katara.isAlive = false
+    zuko.isAlive = false
+    toph.isAlive = false
+
 
     val laghima:Airbender_Class = new Airbender_Class("laghima")
     val boomy:EarthBender = new EarthBender("boomy")
@@ -67,7 +78,8 @@ class partyTesting extends FunSuite{
     korra.level +=4
     val wrongParty:benderParty = new benderParty(List(laghima,boomy,azula,korra))
     theOgParty.fightWon(wrongParty)
-    assert(aang.currentXp == 75 && toph.currentXp == 75 &&zuko.currentXp == 75&& katara.currentXp==75)
+    assert(aang.currentXp == 0 && toph.currentXp == 0 &&zuko.currentXp == 0&& katara.currentXp==0 && aang.level==4&&
+            toph.level == 1 && zuko.level == 1 && katara.level == 1)
   }
   test("Proper experience is recieved by winning part, and party members level up"){
     val aang:Airbender_Class = new Airbender_Class("Aang")
@@ -108,6 +120,8 @@ class partyTesting extends FunSuite{
     theOgParty.fightWon(wrongParty)
     assert(aang.currentXp == 50 && toph.currentXp == 75 )
   }
+
+
   test("Proper experience is recieved by winning party, levels unequal, player amount unequal, random numbers") {
     val aang: Airbender_Class = new Airbender_Class("Aang")
     val toph: EarthBender = new EarthBender("Toph")
