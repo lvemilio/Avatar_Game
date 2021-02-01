@@ -14,7 +14,7 @@ class benderParty(currentMembers:List[BenderClass]) extends partyClass {
   var LvlIncrementer:Double = totalEnemyLvl/members.length //The theoretical "level" every member recieves is passed to gainXp
                                                           //GainxP later records this theoretical "level" and gives experience according to that members level
   for (member <- this.members){
-    member.gainXP(LvlIncrementer)
+    member.gainXP(LvlIncrementer  )
     }
   }
 }
