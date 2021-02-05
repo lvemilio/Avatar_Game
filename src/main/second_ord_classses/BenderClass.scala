@@ -23,5 +23,9 @@ abstract class BenderClass extends AnyPlayFightChar {
   def dealBenDamage(anyPlayFightChar: AnyPlayFightChar): Unit
   def gainXP(anyPlayFightCharLvl: Double):Unit
   def levelUp():Unit
+
+  def battleOptions():List[String]
+  def takeAction(option:String,bender:AnyPlayFightChar)
+
 }
 

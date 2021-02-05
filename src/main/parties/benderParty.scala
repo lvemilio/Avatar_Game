@@ -1,13 +1,13 @@
 package parties
-import highest_order_classes.partyClass
+import highest_order_classes.benderPartyClass
 import second_ord_classses.BenderClass
 
 
 
-class benderParty(currentMembers:List[BenderClass]) extends partyClass {
+class benderParty(currentMembers:List[BenderClass]) extends benderPartyClass {
   var members: List[BenderClass] = currentMembers
   var totalEnemyLvl:Double = 0
-  def fightWon(enemyParty:partyClass):Unit={
+  def fightWon(enemyParty:benderPartyClass):Unit={
     for(enemy <- enemyParty.members){
       totalEnemyLvl+=enemy.level
     }

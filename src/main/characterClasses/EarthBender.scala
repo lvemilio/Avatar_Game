@@ -18,7 +18,7 @@ class EarthBender(name:String) extends BenderClass {
     override var maxXp: Int = 100
     override var currentXp: Int = 0
     override var level: Int = 1
-
+  /////////////////////////////////////////////
     override def takeDamage(damage:Int): Unit ={
       if (this.agility - 7 > 0){ //Earth benders have a low chance of dodging an attack
         return
@@ -28,22 +28,38 @@ class EarthBender(name:String) extends BenderClass {
         isAlive = false
       }
     }
-
+  /////////////////////////////////////////////
     override def dealPhysDamage(anyChar: AnyPlayFightChar): Unit ={
       anyChar.takeDamage(this.physicalAttack - anyChar.resolve)
       if (anyChar.currentHealth<=0){
         gainXP(anyChar.level) //If any character dies from damage, the winner gains xp
       }
     }
-
+  /////////////////////////////////////////////
     override def dealBenDamage(anyChar: AnyPlayFightChar): Unit ={
       if (currentChi<=0){
         return
       }
       anyChar.takeDamage(this.bendingAttackPower-anyChar.resolve)
-      this.currentChi -=  10
+      this.currentChi -=  10 + this.level
     }
-
+    def metalBender(): Unit ={
+      if (this.currentChi<30+this.level) {
+        return
+      }
+      this.currentChi -= 30 + this.level
+      this.bendingAttackPower += 5
+      this.physicalAttack += 10
+    }
+    def unbreakable():Unit ={
+      if (this.currentChi<60+this.level){
+        return
+      }
+      this.resolve += 10
+      this.currentChi -= 60 + this.level
+    }
+  /////////////////////////////////////////////
+  /////////////////////////////////////////////
     override def gainXP(anyCharLevel: Double): Unit = {
       var xpLevelFactor:Double = anyCharLevel.toFloat/this.level.toFloat // The amount of xp is determined by the level factor, if the enemy is a higher level, the winner gets more.
       this.currentXp += (20*xpLevelFactor).round.toInt
@@ -68,4 +84,30 @@ class EarthBender(name:String) extends BenderClass {
       resolve += 1*levelFactor
 
     }
+
+  /////////////////////////////////////////////
+  /////////////////////////////////////////////
+  override def battleOptions(): List[String] = {
+    if (this.level<6){
+      val firstAttacks:List[String] = List("Physical attack", "Bending attack", "Metal Bender")
+      firstAttacks
+    }
+    else{
+      val allAttacks:List[String] = List("Physical attack", "Bending attack", "Metal hands", "Unbreakable")
+      allAttacks
+    }
+  }
+
+  override def takeAction(option: String, anyChar:AnyPlayFightChar): Unit = {
+    if (option == "Physical attack"){
+      dealPhysDamage(anyChar)
+    }else if(option == "Bending attack" ){
+      dealBenDamage(anyChar)
+    }else if(option == "Metal Bender"){
+      metalBender()
+    }else if(option == "Unbreakable"){
+      unbreakable()
+    }
+  }
 }
+

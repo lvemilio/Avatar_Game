@@ -1,6 +1,6 @@
 import org.scalatest._
 import characterClasses.{Airbender_Class,WaterBender,EarthBender,FireBender}
-import highest_order_classes.partyClass
+import highest_order_classes.benderPartyClass
 import parties.benderParty
 
 class partyTesting extends FunSuite{
