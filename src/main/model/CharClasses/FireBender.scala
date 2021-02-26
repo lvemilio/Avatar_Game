@@ -71,8 +71,8 @@ class FireBender(name:String) extends BenderClass{
   }
 
   override def battleOptions(): List[String] = {
-    val ph:List[String] = List("PH")
-    ph
+    val allAttacks:List[String] = List("Physical attack", "Bending attack", "Metal hands", "Unbreakable")
+    allAttacks
   }
 
   override def takeAction(option: String, bender: AnyPlayFightChar): Unit = {
