@@ -71,10 +71,11 @@ class FireBender(name:String) extends BenderClass{
   }
 
   override def battleOptions(): List[String] = {
-    // TODO
+    val ph:List[String] = List("PH")
+    ph
   }
 
   override def takeAction(option: String, bender: AnyPlayFightChar): Unit = {
-    //TODO
+    ???
   }
 }
