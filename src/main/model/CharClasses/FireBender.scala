@@ -1,6 +1,5 @@
 package model.CharClasses
 
-import com.sun.xml.internal.bind.v2.TODO
 import model.highest_order_classes.AnyPlayFightChar
 import model.second_ord_classses.BenderClass
 
