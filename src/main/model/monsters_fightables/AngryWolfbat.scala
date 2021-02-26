@@ -9,7 +9,7 @@ class AngryWolfbat extends Basic_Monster {
   var physicalAttack:Int = 1
   var isAlive:Boolean = true
   var agility:Int = scala.util.Random.nextInt(10)
-  var agilityCounter:Int = 7
+  var agilityCounter:Int = 10
   var level: Int = 1
 
   def takeDamage(damage:Int): Unit ={

@@ -46,7 +46,7 @@ class waterBenderTests extends FunSuite{
     val wolfbatDummie:AngryWolfbat = new AngryWolfbat
 
     katara.takeAction(katara.battleOptions().head,wolfbatDummie)
-    assert(wolfbatDummie.currentHealth == 26)
+    assert(wolfbatDummie.currentHealth == 26||wolfbatDummie.currentHealth == 30)
 
     wolfbatDummie.currentHealth+=4
     katara.takeAction(katara.battleOptions()(1),wolfbatDummie)
