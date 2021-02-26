@@ -1,5 +1,5 @@
+import model.CharClasses.Airbender_Class
 import org.scalatest._
-import characterClasses.Airbender_Class
 
 class takeDamageTesting extends FunSuite {
   test("Damage was reduced by the proper amount"){

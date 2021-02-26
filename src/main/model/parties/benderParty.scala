@@ -1,6 +1,7 @@
-package parties
-import highest_order_classes.benderPartyClass
-import second_ord_classses.BenderClass
+package model.parties
+
+import model.highest_order_classes.benderPartyClass
+import model.second_ord_classses.BenderClass
 
 
 

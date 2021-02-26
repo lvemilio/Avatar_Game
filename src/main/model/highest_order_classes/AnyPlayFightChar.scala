@@ -1,4 +1,4 @@
-package highest_order_classes
+package model.highest_order_classes
 
 abstract class AnyPlayFightChar {
   var maxHealth:Int

@@ -1,7 +1,7 @@
-package characterClasses
+package model.CharClasses
 
-import highest_order_classes.AnyPlayFightChar
-import second_ord_classses.{Basic_Monster, BenderClass}
+import model.highest_order_classes.AnyPlayFightChar
+import model.second_ord_classses.BenderClass
 
 
 class EarthBender(name:String) extends BenderClass {
@@ -89,7 +89,7 @@ class EarthBender(name:String) extends BenderClass {
   /////////////////////////////////////////////
   override def battleOptions(): List[String] = {
     if (this.level<6){
-      val firstAttacks:List[String] = List("Physical attack", "Bending attack", "Metal Bender")
+      val firstAttacks:List[String] = List("Physical attack", "Bending attack", "Metal Bender","")
       firstAttacks
     }
     else{

@@ -1,5 +1,7 @@
-package second_ord_classses
-import highest_order_classes.AnyPlayFightChar
+package model.second_ord_classses
+
+import model.highest_order_classes.AnyPlayFightChar
+
 abstract class Basic_Monster extends AnyPlayFightChar {
   var maxHealth:Int
   var currentHealth:Int

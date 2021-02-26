@@ -1,7 +1,9 @@
+import model.CharClasses.{Airbender_Class, EarthBender, FireBender, WaterBender}
+import model.CharClasses.FireBender
 import org.scalatest._
-import characterClasses.{Airbender_Class,WaterBender,EarthBender,FireBender}
-import highest_order_classes.benderPartyClass
-import parties.benderParty
+import model.CharClasses.Airbender_Class
+import model.highest_order_classes.benderPartyClass
+import model.parties.benderParty
 
 class partyTesting extends FunSuite{
   test("Proper experience is recieved by winning part, levels equal"){

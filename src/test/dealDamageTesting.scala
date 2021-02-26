@@ -1,6 +1,6 @@
+import model.CharClasses.Airbender_Class
+import model.monsters_fightables.AngryWolfbat
 import org.scalatest._
-import characterClasses.Airbender_Class
-import monsters_fightables.AngryWolfbat
 
 class dealDamageTesting extends FunSuite{
   test("Physical damage was reduced by the right amount"){

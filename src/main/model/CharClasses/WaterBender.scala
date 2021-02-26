@@ -1,8 +1,7 @@
-package characterClasses
+package model.CharClasses
 
-import highest_order_classes.AnyPlayFightChar
-import second_ord_classses.BenderClass
-import parties.benderParty
+import model.highest_order_classes.AnyPlayFightChar
+import model.second_ord_classses.BenderClass
 class WaterBender(name:String) extends BenderClass{
   var maxHealth:Int = 105
   var maxChi:Int = 105
@@ -101,7 +100,7 @@ class WaterBender(name:String) extends BenderClass{
   /////////////////////////////////////////////
   override def battleOptions(): List[String] = {
     if (this.level<6){
-      val firstAttacks:List[String] = List("Physical attack", "Bending attack", "Healing Water")
+      val firstAttacks:List[String] = List("Physical attack", "Bending attack", "Healing Water","")
       firstAttacks
       }
     else{

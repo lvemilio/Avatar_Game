@@ -1,5 +1,5 @@
-import characterClasses.{EarthBender, WaterBender}
-import monsters_fightables.AngryWolfbat
+import model.CharClasses.WaterBender
+import model.monsters_fightables.AngryWolfbat
 import org.scalatest._
 
 class waterBenderTests extends FunSuite{
@@ -18,7 +18,7 @@ class waterBenderTests extends FunSuite{
   }
   test("Initial battle options are correct"){
     val katara:WaterBender = new WaterBender("Katara")
-    assert(katara.battleOptions() == List("Physical attack", "Bending attack", "Healing Water"))
+    assert(katara.battleOptions() == List("Physical attack", "Bending attack", "Healing Water",""))
   }
   test("Stats are increased after leveling up"){
     val katara:WaterBender = new WaterBender("Katara")

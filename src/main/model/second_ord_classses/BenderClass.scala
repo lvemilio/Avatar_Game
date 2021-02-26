@@ -1,6 +1,6 @@
-package second_ord_classses
+package model.second_ord_classses
 
-import highest_order_classes.AnyPlayFightChar
+import model.highest_order_classes.AnyPlayFightChar
 
 abstract class BenderClass extends AnyPlayFightChar {
   var maxHealth:Int

@@ -1,6 +1,6 @@
-import characterClasses.EarthBender
+import model.CharClasses.EarthBender
+import model.monsters_fightables.AngryWolfbat
 import org.scalatest._
-import monsters_fightables.AngryWolfbat
 
 class earthBenderTests extends FunSuite{
   test("Initial stats are correct"){
@@ -18,7 +18,7 @@ class earthBenderTests extends FunSuite{
   }
   test("Initial battle options are correct"){
     val toph:EarthBender = new EarthBender("Toph")
-    assert(toph.battleOptions() == List("Physical attack", "Bending attack", "Metal Bender"))
+    assert(toph.battleOptions() == List("Physical attack", "Bending attack", "Metal Bender",""))
   }
   test("Stats are increased after leveling up"){
     val toph:EarthBender = new EarthBender("Toph")

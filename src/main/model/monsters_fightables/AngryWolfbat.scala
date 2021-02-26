@@ -1,6 +1,6 @@
-package monsters_fightables
+package model.monsters_fightables
 
-import second_ord_classses.Basic_Monster
+import model.second_ord_classses.Basic_Monster
 
 class AngryWolfbat extends Basic_Monster {
   var maxHealth:Int = 30

@@ -1,5 +1,5 @@
-import characterClasses.Airbender_Class
-import monsters_fightables.AngryWolfbat
+import model.CharClasses.Airbender_Class
+import model.monsters_fightables.AngryWolfbat
 import org.scalatest._
 
 
